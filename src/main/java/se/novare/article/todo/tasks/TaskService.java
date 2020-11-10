@@ -1,6 +1,7 @@
 package se.novare.article.todo.tasks;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -8,19 +9,21 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
-    @RestController
+@RestController
     @Service
     public class TaskService {
-        private static Long idCounter=1L;
+    @Autowired
+    private static Long idCounter=1L;
         private static List<Task> taskList=new ArrayList();
         static
         {
             taskList.add(new Task(1L,"hema","2020.01.09"));
             taskList.add(new Task(2L,"hema11","2021.02.08"));
         }
-        public List<Task>getAll()
+        public List<Task>getAll(String sort)
         {
             return taskList;
         }
@@ -48,6 +51,12 @@ import java.util.Optional;
         }
 
 
+        public void delete(Long id) {
+
+            taskList= taskList.stream()
+                    .filter(t->!t.getId().equals(id))
+                    .collect(Collectors.toList());
+        }
     }
 
 

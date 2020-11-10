@@ -17,9 +17,9 @@ public class TaskController {
 private TaskService taskService=new TaskService();
 
             @GetMapping("/tasks")
-            public List<Task>getAll()
+            public List<Task>getAll(@RequestParam String sort)
     {
-        return taskService.getAll();
+        return taskService.getAll((sort));
     }
 
     //Get a specific task by Id....
@@ -39,7 +39,11 @@ private TaskService taskService=new TaskService();
         return taskService.create(newTask);
 
     }
-
+   @DeleteMapping("/tasks/{id}")
+    public void delete(@PathVariable Long id)
+   {
+       taskService.delete(id);
+   }
 
 }
 

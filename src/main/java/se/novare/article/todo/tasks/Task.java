@@ -1,10 +1,17 @@
 package se.novare.article.todo.tasks;
 
+import javax.persistence.Entity;
+import javax.persistence.*;
+
+@Entity
+@Table(name="task")
 public class Task
 {
-
+  @Column (name="id")
     private Long id;
+  @Column(name="name")
     private String name;
+  @Column (name="date")
     private String date;
 
     public Task()
