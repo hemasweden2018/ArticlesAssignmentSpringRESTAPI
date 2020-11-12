@@ -1,9 +1,10 @@
-package se.novare.article.news.articles;
+package se.novare.article.news.products;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ArticleRepo extends JpaRepository<Article, Long> {
+public interface ProductRepo extends JpaRepository<Product, Long> {
+
 }

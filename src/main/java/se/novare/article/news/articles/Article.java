@@ -1,9 +1,13 @@
 package se.novare.article.news.articles;
 
+
+import se.novare.article.news.comment.Comment;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "articlesData")
+@Table(name = "articles")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +15,9 @@ public class Article {
     private String title;
     private String body;
     private String authorName;
+
+    @OneToMany
+    private List<Comment> comments;
 
     public Article(){}
 
@@ -52,6 +59,4 @@ public class Article {
         this.authorName = authorName;
     }
 }
-
-
 
