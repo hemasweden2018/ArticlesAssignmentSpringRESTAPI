@@ -1,50 +1,47 @@
-package se.novare.article.todo.tasks;
+package se.novare.article.news.articles;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-public class TaskController {
+public class DevnewsController {
     //private static List<Task>taskList=new ArrayList();
 @Autowired
 
-private TaskService taskService=new TaskService();
+private DevService DevService=new DevService();
 
-            @GetMapping("/tasks")
-            public List<Task>getAll(@RequestParam String sort)
+            @GetMapping("/articles")
+            public List<devnews>getAll()
     {
-        return taskService.getAll((sort));
+        return DevService.getAll();
     }
 
     //Get a specific task by Id....
-    @GetMapping ("tasks/{id}")
-    public Task getById(@PathVariable Long id)
+    @GetMapping ("/articles/{id}")
+    public devnews getById(@PathVariable Long id)
     {
-        return  taskService.getById(id)
+        return  DevService.getById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
     //Create a task..................
     //pass name and date......
-    @PostMapping("/tasks")
-    public Task create(@RequestBody Task newTask)
+    @PostMapping("/articles")
+    public devnews create(@RequestBody devnews newTask)
     {
         //We are using Object-typoe....
         //return taskService.create();
-        return taskService.create(newTask);
+        return DevService.create(newTask);
 
     }
-   @DeleteMapping("/tasks/{id}")
+   @DeleteMapping("/articles/{id}")
     public void delete(@PathVariable Long id)
    {
-       taskService.delete(id);
+       DevService.delete(id);
    }
-
 }
 
 

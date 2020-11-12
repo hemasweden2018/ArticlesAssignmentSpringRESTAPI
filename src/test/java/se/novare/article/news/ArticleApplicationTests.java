@@ -1,4 +1,4 @@
-package se.novare.article.todo;
+package se.novare.article.news;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

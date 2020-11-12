@@ -1,4 +1,4 @@
-package se.novare.article.todo;
+package se.novare.article.news;
 
 
 
